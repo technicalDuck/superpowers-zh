@@ -34,7 +34,7 @@ AI：在开始实现之前，我需要了解几个关键问题：
 </table>
 
 [![GitHub stars](https://img.shields.io/github/stars/jnMetaCode/superpowers-zh?style=social)](https://github.com/jnMetaCode/superpowers-zh)
-[![npm version](https://img.shields.io/npm/v/superpowers-zh)](https://www.npmjs.com/package/superpowers-zh)
+[![private npm](https://img.shields.io/badge/npm-%40tianma%2Fsuperpowers--zh-blue)](http://192.168.21.9:4873/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://makeapullrequest.com)
 
@@ -62,7 +62,7 @@ AI：在开始实现之前，我需要了解几个关键问题：
 | 📦 Skills 总数 | 14 | **20**（14 翻译 + 4 国产原创 + 2 上游历史保留） |
 | 🌐 语言 | 英文 | 中文（技术术语保留英文） |
 | 🤖 **支持工具** | **6 款**：Claude Code / Cursor / Codex / OpenCode / Copilot CLI / Gemini CLI | **18 款**：上述 6 款 + Hermes Agent / Trae / Kiro / Qwen Code（通义灵码）/ OpenClaw / Claw Code / Antigravity / DeerFlow / VS Code / Windsurf / Aider / Qoder |
-| ⚡ **安装方式** | 按工具分别装（每款一条不同的 plugin marketplace 命令） | **`npx superpowers-zh` 一条命令自动识别项目里的工具并安装**；识别不出可 `--tool <name>` 显式指定 |
+| ⚡ **安装方式** | 按工具分别装（每款一条不同的 plugin marketplace 命令） | **`npx --registry http://192.168.21.9:4873/ @tianma/superpowers-zh` 一条命令自动识别项目里的工具并安装**；识别不出可 `--tool <name>` 显式指定 |
 | 🇨🇳 Git 平台 | GitHub 为主 | GitHub + Gitee + Coding + 极狐 GitLab + **CNB（腾讯云原生构建）** |
 | 🇨🇳 CI/CD 示例 | GitHub Actions | GitHub Actions + Gitee Go + Coding CI + 极狐 CI + `.cnb.yml` |
 | 🇨🇳 代码审查风格 | 西方直接风格 | 适配国内团队沟通文化 |
@@ -72,7 +72,7 @@ AI：在开始实现之前，我需要了解几个关键问题：
 | ➕ 工作流执行器 | 无 | 独立 `workflow-runner` skill（多角色 YAML 编排） |
 | 🔄 版本跟进 | 独立迭代 | **同步上游 + 国产增量叠加** |
 | 🤝 接受新 skill PR | 一般不接受（原文：*"we don't generally accept contributions of new skills"*） | 欢迎 PR（中国开发者痛点优先） |
-| 💬 社区 | Discord | 微信公众号「AI不止语」+ 微信群 + QQ 群 |
+| 💬 社区 | Discord |  |
 | 📜 License | MIT | MIT |
 
 **一句话总结：** 英文上游 = 方法论内核；中文增强版 = 方法论内核 **+** 18 款工具一键适配 **+** 国内 Git/CI 生态 **+** 中文化表达习惯。
@@ -81,26 +81,26 @@ AI：在开始实现之前，我需要了解几个关键问题：
 
 | 工具 | 类型 | 一键安装 | 手动安装 |
 |------|------|:---:|:---:|
-| [Claude Code](https://claude.ai/code) | CLI | `npx superpowers-zh` | `.claude/skills/` |
-| [Copilot CLI](https://githubnext.com/projects/copilot-cli) | CLI | `npx superpowers-zh --tool copilot` | `.claude/skills/` |
-| [Hermes Agent](https://github.com/NousResearch/hermes-agent) | CLI | `npx superpowers-zh --tool hermes` | `.hermes/skills/` |
-| [Cursor](https://cursor.sh) | IDE | `npx superpowers-zh` | `.cursor/skills/` |
-| [Windsurf](https://codeium.com/windsurf) | IDE | `npx superpowers-zh` | `.windsurf/skills/` |
-| [Kiro](https://kiro.dev) | IDE | `npx superpowers-zh` | `.kiro/steering/` |
-| [Gemini CLI](https://github.com/google-gemini/gemini-cli) | CLI | `npx superpowers-zh` | `.gemini/skills/` |
-| [Codex CLI](https://github.com/openai/codex) | CLI | `npx superpowers-zh` | `.codex/skills/` |
-| [Aider](https://aider.chat) | CLI | `npx superpowers-zh` | `.aider/skills/` |
-| [Trae](https://trae.ai) | IDE | `npx superpowers-zh` | `.trae/skills/` + `.trae/rules/` |
-| [VS Code](https://code.visualstudio.com) (Copilot) | IDE 插件 | `npx superpowers-zh` | `.github/superpowers/` |
-| [DeerFlow 2.0](https://github.com/bytedance/deer-flow) | Agent 框架 | `npx superpowers-zh` | `skills/custom/` |
-| [OpenCode](https://opencode.ai) | CLI | `npx superpowers-zh` | `.opencode/skills/` |
-| [OpenClaw](https://github.com/anthropics/openclaw) | CLI | `npx superpowers-zh` | `skills/` |
-| [Qwen Code](https://tongyi.aliyun.com/lingma) (通义灵码) | IDE 插件 | `npx superpowers-zh` | `.qwen/skills/` |
-| [Antigravity](https://github.com/anthropics/antigravity) | CLI | `npx superpowers-zh` | `.antigravity/skills/` |
-| [Claw Code](https://github.com/ultraworkers/claw-code) | CLI (Rust) | `npx superpowers-zh` | `.claw/skills/` |
-| [Qoder](https://qoder.com) (阿里 AI IDE) | IDE | `npx superpowers-zh` | `.qoder/skills/` + `.qoder/rules/` |
+| [Claude Code](https://claude.ai/code) | CLI | `npx --registry http://192.168.21.9:4873/ @tianma/superpowers-zh` | `.claude/skills/` |
+| [Copilot CLI](https://githubnext.com/projects/copilot-cli) | CLI | `npx --registry http://192.168.21.9:4873/ @tianma/superpowers-zh --tool copilot` | `.claude/skills/` |
+| [Hermes Agent](https://github.com/NousResearch/hermes-agent) | CLI | `npx --registry http://192.168.21.9:4873/ @tianma/superpowers-zh --tool hermes` | `.hermes/skills/` |
+| [Cursor](https://cursor.sh) | IDE | `npx --registry http://192.168.21.9:4873/ @tianma/superpowers-zh` | `.cursor/skills/` |
+| [Windsurf](https://codeium.com/windsurf) | IDE | `npx --registry http://192.168.21.9:4873/ @tianma/superpowers-zh` | `.windsurf/skills/` |
+| [Kiro](https://kiro.dev) | IDE | `npx --registry http://192.168.21.9:4873/ @tianma/superpowers-zh` | `.kiro/steering/` |
+| [Gemini CLI](https://github.com/google-gemini/gemini-cli) | CLI | `npx --registry http://192.168.21.9:4873/ @tianma/superpowers-zh` | `.gemini/skills/` |
+| [Codex CLI](https://github.com/openai/codex) | CLI | `npx --registry http://192.168.21.9:4873/ @tianma/superpowers-zh` | `.codex/skills/` |
+| [Aider](https://aider.chat) | CLI | `npx --registry http://192.168.21.9:4873/ @tianma/superpowers-zh` | `.aider/skills/` |
+| [Trae](https://trae.ai) | IDE | `npx --registry http://192.168.21.9:4873/ @tianma/superpowers-zh` | `.trae/skills/` + `.trae/rules/` |
+| [VS Code](https://code.visualstudio.com) (Copilot) | IDE 插件 | `npx --registry http://192.168.21.9:4873/ @tianma/superpowers-zh` | `.github/superpowers/` |
+| [DeerFlow 2.0](https://github.com/bytedance/deer-flow) | Agent 框架 | `npx --registry http://192.168.21.9:4873/ @tianma/superpowers-zh` | `skills/custom/` |
+| [OpenCode](https://opencode.ai) | CLI | `npx --registry http://192.168.21.9:4873/ @tianma/superpowers-zh` | `.opencode/skills/` |
+| [OpenClaw](https://github.com/anthropics/openclaw) | CLI | `npx --registry http://192.168.21.9:4873/ @tianma/superpowers-zh` | `skills/` |
+| [Qwen Code](https://tongyi.aliyun.com/lingma) (通义灵码) | IDE 插件 | `npx --registry http://192.168.21.9:4873/ @tianma/superpowers-zh` | `.qwen/skills/` |
+| [Antigravity](https://github.com/anthropics/antigravity) | CLI | `npx --registry http://192.168.21.9:4873/ @tianma/superpowers-zh` | `.antigravity/skills/` |
+| [Claw Code](https://github.com/ultraworkers/claw-code) | CLI (Rust) | `npx --registry http://192.168.21.9:4873/ @tianma/superpowers-zh` | `.claw/skills/` |
+| [Qoder](https://qoder.com) (阿里 AI IDE) | IDE | `npx --registry http://192.168.21.9:4873/ @tianma/superpowers-zh` | `.qoder/skills/` + `.qoder/rules/` |
 
-> 运行 `npx superpowers-zh` 会自动检测你项目中使用的工具，将 20 个 skills 安装到正确位置。
+> 运行 `npx --registry http://192.168.21.9:4873/ @tianma/superpowers-zh` 会自动检测你项目中使用的工具，将 20 个 skills 安装到正确位置。
 
 ### 翻译的 Skills（14 个）
 
@@ -143,7 +143,19 @@ AI：在开始实现之前，我需要了解几个关键问题：
 
 ```bash
 cd /your/project
-npx superpowers-zh
+npx --registry http://192.168.21.9:4873/ @tianma/superpowers-zh
+```
+
+如果项目根目录已经配置 `.npmrc`：
+
+```ini
+registry=http://192.168.21.9:4873/
+```
+
+也可以简写为：
+
+```bash
+npx @tianma/superpowers-zh
 ```
 
 > ⚠️ **不要在主目录（`~`）下跑**。v1.2.1 起会拒绝并提示，老版本会把 skills 和 `CLAUDE.md` 等 bootstrap 文件写到你的 home 目录，污染所有项目。如已误装见下文「卸载 / 误装清理」。
@@ -156,7 +168,7 @@ npx superpowers-zh
 >
 > **下面的 `cp -r skills` 命令只复制 skills 目录**，不会自动配置 hooks、不会生成 bootstrap 引导。结果：skills 物理上存在，但 AI 不会在合适时机自动调用，需要你每次手动喊 "use brainstorming skill" 之类。
 >
-> **强烈推荐用方式一 `npx superpowers-zh`** —— 它会一键处理 skills 复制 + bootstrap 生成 + hooks 配置 + 工具特定适配。仅在 npx 不可用（极端无网络环境）时才退到手动。
+> **强烈推荐用方式一 `npx --registry http://192.168.21.9:4873/ @tianma/superpowers-zh`** —— 它会一键处理 skills 复制 + bootstrap 生成 + hooks 配置 + 工具特定适配。仅在 npx 不可用（极端无网络环境）时才退到手动。
 
 ```bash
 # 克隆仓库
@@ -213,7 +225,7 @@ cp -r superpowers-zh/skills /your/project/.qoder/skills      # Qoder（阿里 AI
 
 ```bash
 cd /your/project          # 或 cd ~ 如果误装到了主目录
-npx superpowers-zh@latest --uninstall
+npx --registry http://192.168.21.9:4873/ @tianma/superpowers-zh@latest --uninstall
 ```
 
 会做这些：
@@ -235,63 +247,6 @@ npx superpowers-zh@latest --uninstall
 
 ---
 
-## 贡献
-
-欢迎参与！翻译改进、新增 skills、Bug 修复都可以。
-
-### 贡献方向
-
-我们只接收符合 superpowers 定位的 skill——**AI 编程工作流方法论**。好的 skill 应该：
-
-- 教 AI 助手**怎么干活**，而不是某个框架/语言的教程
-- 解决上游英文版不覆盖的**中国开发者痛点**
-- 有明确的步骤、检查清单、示例，AI 加载后能直接执行
-
-欢迎提 Issue 讨论你的想法！
-
----
-
-## 交流 · Community
-
-微信公众号 **「AI不止语」**（微信搜索 `AI_BuZhiYu`）— 技术问答 · 项目更新 · 实战文章
-
-| 渠道 | 加入方式 |
-|------|---------|
-| QQ 2群 | [点击加入](https://qm.qq.com/q/EeNQA9xCxy)（群号 1071280067） |
-| 微信群 | 关注公众号后回复「群」获取入群方式 |
-
----
-
-## 🌟 相关项目生态
-
-**六个项目组合使用，覆盖 AI 编程 + AI 视频创作的完整链路。**
-
-| 项目 | 定位 | 一句话 |
-|------|------|-------|
-| **[superpowers-zh](https://github.com/jnMetaCode/superpowers-zh)**（本项目） ![](https://img.shields.io/github/stars/jnMetaCode/superpowers-zh?style=flat&label=⭐) | 🧠 工作方法论 | 20 个 skills 教 AI 怎么干活（TDD / 调试 / 代码审查等） |
-| **[agency-agents-zh](https://github.com/jnMetaCode/agency-agents-zh)** ![](https://img.shields.io/github/stars/jnMetaCode/agency-agents-zh?style=flat&label=⭐) | 🎭 专家角色库 | 211 个**即插即用** AI 专家，含 46 中国原创（小红书 / 抖音 / 飞书 / 钉钉） |
-| **[agency-orchestrator](https://github.com/jnMetaCode/agency-orchestrator)** | 🚀 编排引擎 | 一句话 → 211 专家协作，**几分钟出方案**（9 家 LLM / 6 免费） |
-| **[ai-coding-guide](https://github.com/jnMetaCode/ai-coding-guide)** | 📖 实战教程 | 66 个 Claude Code 技巧 + 9 款工具最佳实践 + 配置模板 |
-| **[shellward](https://github.com/jnMetaCode/shellward)** | 🛡️ 安全中间件 | 8 层防御 + DLP 数据流 + 注入检测，**零依赖**（含 MCP Server） |
-| 🆕 **[ai-shortfilm-prompts](https://github.com/jnMetaCode/ai-shortfilm-prompts)** | 🎬 视频提示词 | Mx-Shell《丧尸清道夫》5 段式方法论 + Skill，Seedance / 小云雀 / Sora / 可灵 / 即梦通用 |
-
----
-
-### 🔥 重点推荐：[agency-orchestrator](https://github.com/jnMetaCode/agency-orchestrator) — 一句话调度 211 个 AI 专家协作，几分钟交付完整方案
-
-以前写个方案：你当指挥官，把 AI 轮流扮演 5 个角色，复制粘贴 10 次，1 小时没了。
-
-**现在：** 丢一句话进去 `"做一个电商退款流程"`，**产品 → 架构 → 安全 → 测试 → DBA 自动接力**，几分钟完整方案落地。
-
-- 🎭 **211+ 专家角色**（含 46 个中国市场原创：小红书 / 抖音 / 微信 / 飞书 / 钉钉）
-- 🧩 **零代码 YAML**，一行 prompt 就能跑
-- 💰 **9 家 LLM 可选**（DeepSeek / Claude / OpenAI / Ollama 等，**6 家免费**）
-- 🔗 **与 superpowers-zh 互补**：本项目管"**怎么做**"（方法论），orchestrator 管"**谁来做**"（角色协作）
-
-👉 **[立即体验 agency-orchestrator →](https://github.com/jnMetaCode/agency-orchestrator)**
-
----
-
 ## 致谢
 
 - 原始英文版：[obra/superpowers](https://github.com/obra/superpowers)（MIT 协议）
@@ -304,11 +259,3 @@ npx superpowers-zh@latest --uninstall
 MIT License — 自由使用，商业或个人均可。
 
 ---
-
-<div align="center">
-
-**🦸 AI 编程超能力：让 Claude Code / Hermes Agent / Cursor / Claw Code / Qoder 等 18 款工具真正会干活**
-
-[Star 本项目](https://github.com/jnMetaCode/superpowers-zh) · [提交 Issue](https://github.com/jnMetaCode/superpowers-zh/issues) · [贡献代码](https://github.com/jnMetaCode/superpowers-zh/pulls)
-
-</div>

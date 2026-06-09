@@ -1,6 +1,9 @@
 {
-  "name": "superpowers-zh",
+  "name": "@tianma/superpowers-zh",
   "version": "1.5.0",
+  "publishConfig": {
+    "registry": "http://192.168.21.9:4873/"
+  },
   "engines": {
     "node": ">=20.0.0"
   },
@@ -67,6 +70,6 @@
     "url": "git+https://github.com/jnMetaCode/superpowers-zh.git"
   },
   "homepage": "https://github.com/jnMetaCode/superpowers-zh",
-  "author": "jnMetaCode",
+  "author": "TianMa",
   "license": "MIT"
 }
