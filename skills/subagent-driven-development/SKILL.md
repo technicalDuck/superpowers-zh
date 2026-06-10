@@ -39,6 +39,8 @@ digraph when_to_use {
 
 ## 流程
 
+开始分派任何实现子智能体之前，先使用 `superpowers:using-git-worktrees` 完成工作区选择流程。用户选择隔离 worktree 时，在隔离工作区中继续；用户选择当前分支时，报告当前路径和分支后继续。
+
 ```dot
 digraph process {
     rankdir=TB;
@@ -234,7 +236,7 @@ digraph process {
 ## 红线
 
 **绝不：**
-- 未经用户明确同意就在 main/master 分支上开始实现
+- 跳过工作区选择流程就开始实现
 - 跳过审查（规格合规性或代码质量）
 - 带着未修复的问题继续
 - 并行分派多个实现子智能体（会冲突）
@@ -265,7 +267,7 @@ digraph process {
 ## 集成
 
 **必需的工作流技能：**
-- **superpowers:using-git-worktrees** - 必需：在开始前建立隔离工作区
+- **superpowers:using-git-worktrees** - 必需：在开始前询问用户选择隔离 worktree 或当前分支开发
 - **superpowers:writing-plans** - 创建本技能执行的计划
 - **superpowers:requesting-code-review** - 审查子智能体的代码审查模板
 - **superpowers:finishing-a-development-branch** - 所有任务完成后收尾

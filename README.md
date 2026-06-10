@@ -116,7 +116,7 @@ AI：在开始实现之前，我需要了解几个关键问题：
 | **完成前验证** (verification-before-completion) | 证据先行——声称完成前必须跑验证 |
 | **派遣并行 Agent** (dispatching-parallel-agents) | 多任务并发执行 |
 | **子 Agent 驱动开发** (subagent-driven-development) | 每个任务一个 agent，两轮审查 |
-| **Git Worktree 使用** (using-git-worktrees) | 隔离式特性开发 |
+| **Git Worktree 使用** (using-git-worktrees) | 实现前询问用户选择隔离 worktree 或当前分支开发 |
 | **完成开发分支** (finishing-a-development-branch) | 合并/PR/保留/丢弃四选一 |
 | **编写 Skills** (writing-skills) | 创建新 skill 的方法论 |
 | **使用 Superpowers** (using-superpowers) | 元技能：如何调用和优先使用 skills |

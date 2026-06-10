@@ -20,7 +20,8 @@ description: 当你有一份书面实现计划需要在单独的会话中执行�
 1. 读取计划文件
 2. 批判性审查——识别计划中的任何问题或疑虑
 3. 如果有疑虑：在开始之前向你的人类伙伴提出
-4. 如果没有疑虑：创建 TodoWrite 并继续
+4. 如果没有疑虑：使用 superpowers:using-git-worktrees 完成工作区选择流程
+5. 用户选择工作区后：创建 TodoWrite 并继续
 
 **审查时重点检查：**
 - 步骤之间是否有依赖遗漏？（A 依赖 B，但 B 排在 A 之后）
@@ -165,11 +166,11 @@ $ git commit -m "feat: 添加用户输入验证（任务 2/5）"
 - 每个任务单独提交，commit message 引用任务编号
 - 计划要求时引用相应技能
 - 遇到阻塞时停下来，不要猜测
-- 未经用户明确同意，绝不在 main/master 分支上开始实现
+- 开始实现前必须完成工作区选择流程；如果用户选择当前分支开发，报告当前路径和分支后继续
 
 ## 集成
 
 **必需的工作流技能：**
-- **superpowers:using-git-worktrees** - 必需：开始前建立隔离的工作空间
+- **superpowers:using-git-worktrees** - 必需：开始前询问用户选择隔离 worktree 或当前分支开发
 - **superpowers:writing-plans** - 创建此技能要执行的计划
 - **superpowers:finishing-a-development-branch** - 所有任务完成后收尾开发

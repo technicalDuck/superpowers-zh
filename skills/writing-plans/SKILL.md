@@ -13,7 +13,7 @@ description: 当你有规格说明或需求用于多步骤任务时使用，在�
 
 **开始时宣布：** "我正在使用 writing-plans 技能创建实现计划。"
 
-**上下文：** 此技能应在专用 worktree 中运行（由 brainstorming 技能创建）。
+**上下文：** 此技能应在用户选择的开发工作区中运行。开始实现前由 using-git-worktrees 技能询问用户选择隔离 worktree 或当前分支开发。
 
 **计划保存位置：** `docs/superpowers/plans/YYYY-MM-DD-<feature-name>.md`
 - （用户对计划位置的偏好优先于此默认值）
