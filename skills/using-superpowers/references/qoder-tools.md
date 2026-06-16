@@ -1,8 +1,8 @@
-# Qoder 工具映射
+# Qoder / Qoder CN 工具映射
 
-Skills 使用 Claude Code 的工具名称。Qoder（阿里 AI IDE）大部分工具与 Claude Code **同名**，只有少数差异：
+Skills 使用 Claude Code 的工具名称。Qoder / Qoder CN（阿里 AI IDE）大部分工具与 Claude Code **同名**，只有少数差异：
 
-| Skill 中的引用 | Qoder 等价工具 |
+| Skill 中的引用 | Qoder / Qoder CN 等价工具 |
 |---------------|---------------|
 | `Read` / `Write` / `Edit` | 同名（`Read` / `Write` / `Edit`） |
 | `Bash` | 同名 |
@@ -16,18 +16,18 @@ Skills 使用 Claude Code 的工具名称。Qoder（阿里 AI IDE）大部分工
 
 ## Task 子 Agent 类型
 
-| Claude Code Agent | Qoder 等价 |
+| Claude Code Agent | Qoder / Qoder CN 等价 |
 |------------------|-----------|
 | `general-purpose` | `general-purpose` |
 | `Explore` | `explore-agent` |
 | `Plan` | `plan-agent` |
 | `claude-code-guide` | `qoder-guide` |
 
-Qoder 额外有 `browser-agent`、`code-reviewer`、`design-agent` 等专用 agent，依任务匹配选用。
+Qoder / Qoder CN 额外有 `browser-agent`、`code-reviewer`、`design-agent` 等专用 agent，依任务匹配选用。
 
 ## Quest MCP 工具（Qoder 原生）
 
-Qoder 内置 Quest 系统提供以下工具，Claude Code 没有等价物，可在 skill 流程中直接调用：
+Qoder / Qoder CN 内置 Quest 系统提供以下工具，Claude Code 没有等价物，可在 skill 流程中直接调用：
 
 | 工具 | 用途 |
 |------|------|
@@ -40,4 +40,4 @@ Qoder 内置 Quest 系统提供以下工具，Claude Code 没有等价物，可�
 
 ## 加载方式
 
-Qoder 在每个会话自动加载 `.qoder/rules/superpowers-zh.md`（`trigger: always_on`），里面包含 skill 索引。`.qoder/skills/<name>/SKILL.md` 由模型按 description 自主调用，也可输入 `/<skill-name>` 手动触发。
+Qoder 在每个会话自动加载 `.qoder/rules/superpowers-zh.md`（`trigger: always_on`），Qoder CN 自动加载 `.qoder-cn/rules/superpowers-zh.md`，里面包含 skill 索引。对应 `skills/<name>/SKILL.md` 由模型按 description 自主调用，也可输入 `/<skill-name>` 手动触发。

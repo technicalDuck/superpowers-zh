@@ -64,6 +64,7 @@ const TARGETS = [
   { name: 'Hermes Agent',  dir: '.hermes/skills',            detect: ['.hermes', 'HERMES.md', '.hermes.md'] },
   { name: 'Claw Code',     dir: '.claw/skills',              detect: ['.claw', 'CLAW.md'] },
   { name: 'Qoder',         dir: '.qoder/skills',             detect: '.qoder' },
+  { name: 'Qoder CN',      dir: '.qoder-cn/skills',          detect: '.qoder-cn' },
 ];
 
 function countDirs(dir) {
@@ -142,8 +143,12 @@ ${skillTable}
   console.log(`  ✅ Trae: bootstrap rule -> ${rulePath}`);
 }
 
-function generateQoderBootstrap(projectDir) {
-  const rulesDir = resolve(projectDir, '.qoder', 'rules');
+function generateQoderBootstrap(projectDir, options = {}) {
+  const {
+    baseDir = '.qoder',
+    displayName = 'Qoder',
+  } = options;
+  const rulesDir = resolve(projectDir, baseDir, 'rules');
   mkdirSync(rulesDir, { recursive: true });
 
   const skillEntries = scanSkillEntries(SKILLS_SRC);
@@ -171,7 +176,7 @@ alwaysApply: true
 
 ## 可用 Skills
 
-Skills 位于 \`.qoder/skills/\` 目录，每个 skill 有独立的 \`SKILL.md\` 文件。
+Skills 位于 \`${baseDir}/skills/\` 目录，每个 skill 有独立的 \`SKILL.md\` 文件。
 
 | Skill | 触发条件 |
 |-------|---------|
@@ -179,12 +184,12 @@ ${skillTable}
 
 ## 如何使用
 
-当任务匹配某个 skill 的触发条件时，读取对应的 \`.qoder/skills/<skill-name>/SKILL.md\` 并严格遵循其流程。也可输入 \`/<skill-name>\` 显式调用。
+当任务匹配某个 skill 的触发条件时，读取对应的 \`${baseDir}/skills/<skill-name>/SKILL.md\` 并严格遵循其流程。也可输入 \`/<skill-name>\` 显式调用。
 `;
 
   const rulePath = resolve(rulesDir, 'superpowers-zh.md');
   writeFileSync(rulePath, rule, 'utf8');
-  console.log(`  ✅ Qoder: bootstrap rule -> ${rulePath}`);
+  console.log(`  ✅ ${displayName}: bootstrap rule -> ${rulePath}`);
 }
 
 function generateAntigravityBootstrap(projectDir) {
@@ -432,6 +437,9 @@ const TOOL_ALIASES = {
   'claw-code':    'Claw Code',
   'clawcode':     'Claw Code',
   'qoder':        'Qoder',
+  'qoder-cn':     'Qoder CN',
+  'qodercn':      'Qoder CN',
+  'qoder_cn':     'Qoder CN',
 };
 
 function showHelp() {
@@ -485,7 +493,11 @@ function installForTarget(target) {
   }
 
   if (target.name === 'Qoder') {
-    generateQoderBootstrap(PROJECT_DIR);
+    generateQoderBootstrap(PROJECT_DIR, { baseDir: '.qoder', displayName: 'Qoder' });
+  }
+
+  if (target.name === 'Qoder CN') {
+    generateQoderBootstrap(PROJECT_DIR, { baseDir: '.qoder-cn', displayName: 'Qoder CN' });
   }
 
   if (target.name === 'Antigravity') {
@@ -521,6 +533,7 @@ function isHomeDir(p) {
 const BOOTSTRAP_DELETE = [
   '.trae/rules/superpowers-zh.md',
   '.qoder/rules/superpowers-zh.md',
+  '.qoder-cn/rules/superpowers-zh.md',
   '.antigravity/rules.md',
 ];
 const BOOTSTRAP_CLEAN_SECTION = [
