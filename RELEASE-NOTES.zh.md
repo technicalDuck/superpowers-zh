@@ -6,6 +6,27 @@
 
 ---
 
+## v1.6.0 (2026-06-20)
+
+本版本对齐上游 **v6.0.0** 的实质性 skill / 基础设施变更，并新增两款 harness 支持。
+
+### 🆕 新增 harness 支持
+
+- **Kimi Code**（#59，关 #37）—— 插件清单模型 `.kimi-plugin/plugin.json`：指向现有 `skills/`、`sessionStart` 会话开始自动加载 `using-superpowers`、`skillInstructions` 提供 Kimi 工具映射。安装：Kimi 插件管理器 `/plugins install https://github.com/jnMetaCode/superpowers-zh`。文档见 `docs/README.kimi.md`。
+- **Pi (oh-my-pi)**（#60，关 #44）—— 扩展模型：`package.json` 的 `pi` 字段 + `.pi/extensions/superpowers.ts`（注册生命周期钩子，注入 `using-superpowers` bootstrap + Pi 工具映射）。文档见 `docs/README.pi.md`。
+
+### 🔒 brainstorm 可视化伴侣安全模型（#58，同步上游 v6.0.0）
+
+伴侣服务器重写为**每会话密钥**鉴权（`?key=` 或会话 cookie 门禁所有端点）+ 安全响应头（`X-Frame-Options: DENY`、CSP `frame-ancestors 'none'`、`Cross-Origin-Resource-Policy: same-origin` 等），修复旧版无鉴权时本地浏览器可读取屏幕/注入事件的缺口。Token 用 `crypto.randomBytes(32)`、`timingSafeEqual` 比较、token 文件 `0o600`。
+
+### 🔧 其它 v6 同步
+
+- **using-git-worktrees / finishing-a-development-branch**（#57）—— 移除已废弃的全局 worktree 目录 `~/.config/superpowers/worktrees/`，对齐 v6.0.0。
+- **hooks/session-start**（#58）—— 移除 legacy `~/.config/superpowers/skills` 迁移警告，输出补 `| cat`。
+- **opencode 测试**（#72）—— 修复 `setup.sh` 拷贝不存在的 `lib/` 导致的测试飘红。
+
+> SDD（subagent-driven-development）的 v6 重写为性能/成本优化，需专门 eval 验证，故本版本暂未纳入（详见 #19）。
+
 ## v1.5.0 (2026-05-21)
 
 ### 🆕 Qoder 适配（第 18 款工具，#26、#34）

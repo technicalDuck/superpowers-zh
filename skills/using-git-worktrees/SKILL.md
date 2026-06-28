@@ -1,6 +1,11 @@
 ---
 name: using-git-worktrees
 description: 开始实现前用于询问用户是否创建隔离 worktree，按用户选择创建隔离工作区或直接在当前分支开发
+version: "1.0.0"
+license: MIT
+metadata:
+  hermes:
+    tags: [git, workflow]
 ---
 
 # 使用 Git 工作树

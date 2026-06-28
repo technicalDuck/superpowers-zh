@@ -53,7 +53,7 @@ const TARGETS = [
   { name: 'Kiro',          dir: '.kiro/steering',            detect: '.kiro' },
   { name: 'DeerFlow',      dir: 'skills/custom',             detect: 'deer_flow' },
   { name: 'Trae',          dir: '.trae/skills',              detect: '.trae' },
-  { name: 'Antigravity',   dir: '.antigravity/skills',       detect: '.antigravity' },
+  { name: 'Antigravity',   dir: '.agents/skills',            detect: '.agents' },
   { name: 'VS Code',       dir: '.github/superpowers',       detect: '.github/copilot-instructions.md' },
   { name: 'OpenClaw',      dir: 'skills',                     detect: '.openclaw' },
   { name: 'Windsurf',      dir: '.windsurf/skills',          detect: '.windsurf' },
@@ -209,17 +209,17 @@ function generateAntigravityBootstrap(projectDir) {
 
 ## 可用 Skills
 
-Skills 位于 \`.antigravity/skills/\` 目录，每个 skill 有独立的 \`SKILL.md\` 文件。
+Skills 位于 \`.agents/skills/\` 目录，每个 skill 有独立的 \`SKILL.md\` 文件。
 
 ${skillList}
 
 ## 如何使用
 
-当任务匹配某个 skill 时，读取对应的 \`.antigravity/skills/<skill-name>/SKILL.md\` 并严格遵循其流程。
+当任务匹配某个 skill 时，读取对应的 \`.agents/skills/<skill-name>/SKILL.md\` 并严格遵循其流程。
 `;
 
-  // 写入 .antigravity/rules.md（不覆盖用户已有的 GEMINI.md / AGENTS.md）
-  const rulePath = resolve(projectDir, '.antigravity', 'rules.md');
+  // 写入 .agents/rules.md（不覆盖用户已有的 GEMINI.md / AGENTS.md）
+  const rulePath = resolve(projectDir, '.agents', 'rules.md');
   writeFileSync(rulePath, content, 'utf8');
   console.log(`  ✅ Antigravity: bootstrap rule -> ${rulePath}`);
 }
@@ -534,7 +534,7 @@ const BOOTSTRAP_DELETE = [
   '.trae/rules/superpowers-zh.md',
   '.qoder/rules/superpowers-zh.md',
   '.qoder-cn/rules/superpowers-zh.md',
-  '.antigravity/rules.md',
+  '.agents/rules.md',
 ];
 const BOOTSTRAP_CLEAN_SECTION = [
   'CLAUDE.md',
@@ -761,18 +761,17 @@ function install(forceToolName, force) {
   }
 
   if (installed === 0) {
-    console.log('  ⚠️  未检测到任何已知的 AI 编程工具。\n');
-    console.log('  如果你使用的是 Cursor、Trae 等工具，请用 --tool 指定：');
-    console.log('    npx superpowers-zh --tool cursor');
-    console.log('    npx superpowers-zh --tool trae\n');
-    console.log('  现在将默认安装到 .claude/skills/（兼容 Claude Code / OpenClaw）\n');
-
-    const dest = resolve(PROJECT_DIR, '.claude', 'skills');
-    mkdirSync(dest, { recursive: true });
-    copyDirSync(SKILLS_SRC, dest);
-    console.log(`  ✅ 默认安装: ${countDirs(dest)} 个 skills -> ${dest}`);
-
-    generateClaudeCodeBootstrap(PROJECT_DIR);
+    // 检测落空时不再静默装 Claude Code —— 否则 Antigravity / Trae 等
+    // 不会在项目里留下检测目录的工具，会被误装成 Claude（见 issue #33）。
+    // 改为明确报错并教用户用 --tool 显式指定。
+    console.log('  ⚠️  未在当前目录检测到任何已知 AI 编程工具的项目标记。\n');
+    console.log('  为避免装错工具，未做任何安装。请用 --tool 显式指定你的工具，例如：\n');
+    console.log('    npx superpowers-zh --tool claude        # Claude Code / Copilot CLI');
+    console.log('    npx superpowers-zh --tool antigravity   # Google Antigravity');
+    console.log('    npx superpowers-zh --tool trae          # Trae');
+    console.log('    npx superpowers-zh --tool cursor        # Cursor\n');
+    console.log(`  全部可用别名：${Object.keys(TOOL_ALIASES).join(', ')}\n`);
+    process.exit(1);
   }
 
   console.log('\n  安装完成！重启你的 AI 编程工具即可生效。\n');
