@@ -10,7 +10,7 @@ import { homedir } from 'os';
 function copyDirSync(src, dest) {
   // 解析 junction/symlink，避免 Windows npx 缓存路径下 readdir 返回空
   let realSrc = src;
-  try { realSrc = realpathSync(src); } catch {}
+  try { realSrc = realpathSync(src); } catch { }
 
   mkdirSync(dest, { recursive: true });
   const entries = readdirSync(realSrc, { withFileTypes: true });
@@ -27,7 +27,7 @@ function copyDirSync(src, dest) {
         const realStat = lstatSync(real);
         if (realStat.isDirectory()) copyDirSync(real, destPath);
         else copyFileSync(real, destPath);
-      } catch {}
+      } catch { }
     } else if (stat.isDirectory()) {
       copyDirSync(srcPath, destPath);
     } else if (stat.isFile()) {
@@ -47,24 +47,24 @@ const PROJECT_DIR = process.cwd();
 const LEGACY_AGENT_FILENAMES = ['code-reviewer.md'];
 
 const TARGETS = [
-  { name: 'Claude Code',   dir: '.claude/skills',           detect: '.claude' },
-  { name: 'Cursor',        dir: '.cursor/skills',           detect: ['.cursor', '.cursorrules'] },
-  { name: 'Codex CLI',     dir: '.codex/skills',            detect: '.codex' },
-  { name: 'Kiro',          dir: '.kiro/steering',            detect: '.kiro' },
-  { name: 'DeerFlow',      dir: 'skills/custom',             detect: 'deer_flow' },
-  { name: 'Trae',          dir: '.trae/skills',              detect: '.trae' },
-  { name: 'Antigravity',   dir: '.agents/skills',            detect: '.agents' },
-  { name: 'VS Code',       dir: '.github/superpowers',       detect: '.github/copilot-instructions.md' },
-  { name: 'OpenClaw',      dir: 'skills',                     detect: '.openclaw' },
-  { name: 'Windsurf',      dir: '.windsurf/skills',          detect: '.windsurf' },
-  { name: 'Gemini CLI',    dir: '.gemini/skills',            detect: 'GEMINI.md' },
-  { name: 'Aider',         dir: '.aider/skills',             detect: '.aider' },
-  { name: 'OpenCode',      dir: '.opencode/skills',          detect: '.opencode' },
-  { name: 'Qwen Code',     dir: '.qwen/skills',             detect: '.qwen' },
-  { name: 'Hermes Agent',  dir: '.hermes/skills',            detect: ['.hermes', 'HERMES.md', '.hermes.md'] },
-  { name: 'Claw Code',     dir: '.claw/skills',              detect: ['.claw', 'CLAW.md'] },
-  { name: 'Qoder',         dir: '.qoder/skills',             detect: '.qoder' },
-  { name: 'Qoder CN',      dir: '.qoder-cn/skills',          detect: '.qoder-cn' },
+  { name: 'Claude Code', dir: '.claude/skills', detect: '.claude' },
+  { name: 'Cursor', dir: '.cursor/skills', detect: ['.cursor', '.cursorrules'] },
+  { name: 'Codex CLI', dir: '.codex/skills', detect: '.codex' },
+  { name: 'Kiro', dir: '.kiro/steering', detect: '.kiro' },
+  { name: 'DeerFlow', dir: 'skills/custom', detect: 'deer_flow' },
+  { name: 'Trae', dir: '.trae/skills', detect: '.trae' },
+  { name: 'Antigravity', dir: '.agents/skills', detect: '.agents' },
+  { name: 'VS Code', dir: '.github/superpowers', detect: '.github/copilot-instructions.md' },
+  { name: 'OpenClaw', dir: 'skills', detect: '.openclaw' },
+  { name: 'Windsurf', dir: '.windsurf/skills', detect: '.windsurf' },
+  { name: 'Gemini CLI', dir: '.gemini/skills', detect: 'GEMINI.md' },
+  { name: 'Aider', dir: '.aider/skills', detect: '.aider' },
+  { name: 'OpenCode', dir: '.opencode/skills', detect: '.opencode' },
+  { name: 'Qwen Code', dir: '.qwen/skills', detect: '.qwen' },
+  { name: 'Hermes Agent', dir: '.hermes/skills', detect: ['.hermes', 'HERMES.md', '.hermes.md'] },
+  { name: 'Claw Code', dir: '.claw/skills', detect: ['.claw', 'CLAW.md'] },
+  { name: 'Qoder', dir: '.qoder/skills', detect: '.qoder' },
+  { name: 'Qoder CN', dir: '.qoder-cn/skills', detect: '.qoder-cn' },
 ];
 
 function countDirs(dir) {
@@ -410,36 +410,36 @@ ${skillList}
 
 // 工具名称别名映射（用户输入 -> TARGETS.name）
 const TOOL_ALIASES = {
-  'claude':       'Claude Code',
-  'claude-code':  'Claude Code',
-  'claudecode':   'Claude Code',
-  'copilot':      'Claude Code',
-  'copilot-cli':  'Claude Code',
-  'cursor':       'Cursor',
-  'codex':        'Codex CLI',
-  'kiro':         'Kiro',
-  'deerflow':     'DeerFlow',
-  'trae':         'Trae',
-  'antigravity':  'Antigravity',
-  'vscode':       'VS Code',
-  'vs-code':      'VS Code',
-  'openclaw':     'OpenClaw',
-  'windsurf':     'Windsurf',
-  'gemini':       'Gemini CLI',
-  'gemini-cli':   'Gemini CLI',
-  'aider':        'Aider',
-  'opencode':     'OpenCode',
-  'qwen':         'Qwen Code',
-  'qwen-code':    'Qwen Code',
-  'hermes':       'Hermes Agent',
+  'claude': 'Claude Code',
+  'claude-code': 'Claude Code',
+  'claudecode': 'Claude Code',
+  'copilot': 'Claude Code',
+  'copilot-cli': 'Claude Code',
+  'cursor': 'Cursor',
+  'codex': 'Codex CLI',
+  'kiro': 'Kiro',
+  'deerflow': 'DeerFlow',
+  'trae': 'Trae',
+  'antigravity': 'Antigravity',
+  'vscode': 'VS Code',
+  'vs-code': 'VS Code',
+  'openclaw': 'OpenClaw',
+  'windsurf': 'Windsurf',
+  'gemini': 'Gemini CLI',
+  'gemini-cli': 'Gemini CLI',
+  'aider': 'Aider',
+  'opencode': 'OpenCode',
+  'qwen': 'Qwen Code',
+  'qwen-code': 'Qwen Code',
+  'hermes': 'Hermes Agent',
   'hermes-agent': 'Hermes Agent',
-  'claw':         'Claw Code',
-  'claw-code':    'Claw Code',
-  'clawcode':     'Claw Code',
-  'qoder':        'Qoder',
-  'qoder-cn':     'Qoder CN',
-  'qodercn':      'Qoder CN',
-  'qoder_cn':     'Qoder CN',
+  'claw': 'Claw Code',
+  'claw-code': 'Claw Code',
+  'clawcode': 'Claw Code',
+  'qoder': 'Qoder',
+  'qoder-cn': 'Qoder CN',
+  'qodercn': 'Qoder CN',
+  'qoder_cn': 'Qoder CN',
 };
 
 function showHelp() {
@@ -633,7 +633,7 @@ function uninstallForTarget(target, srcSkillNames) {
       const left = readdirSync(dest).filter(n => n !== '.DS_Store');
       if (left.length === 0) rmSync(dest, { recursive: true, force: true });
     }
-  } catch {}
+  } catch { }
   return removed;
 }
 
@@ -676,7 +676,7 @@ function uninstall() {
     try {
       const left = readdirSync(agentsDest).filter(n => n !== '.DS_Store');
       if (left.length === 0) rmSync(agentsDest, { recursive: true, force: true });
-    } catch {}
+    } catch { }
   }
 
   let bootstrapsRemoved = 0;
@@ -704,17 +704,17 @@ function uninstall() {
 }
 
 function install(forceToolName, force) {
- try {
-  console.log(`\n  superpowers-zh v${PKG.version} — AI 编程超能力中文版\n`);
+  try {
+    console.log(`\n  superpowers-zh v${PKG.version} — AI 编程超能力中文版\n`);
 
-  if (!existsSync(SKILLS_SRC)) {
-    console.error('  ❌ 错误：skills 源目录不存在，请重新安装 superpowers-zh。');
-    process.exit(1);
-  }
+    if (!existsSync(SKILLS_SRC)) {
+      console.error('  ❌ 错误：skills 源目录不存在，请重新安装 superpowers-zh。');
+      process.exit(1);
+    }
 
-  if (!force && isHomeDir(PROJECT_DIR)) {
-    console.error(
-`  ⚠️  当前目录是用户主目录: ${PROJECT_DIR}
+    if (!force && isHomeDir(PROJECT_DIR)) {
+      console.error(
+        `  ⚠️  当前目录是用户主目录: ${PROJECT_DIR}
 
   superpowers-zh 应该装到具体项目目录，而不是 ~/。
   在主目录安装会把 skills 和 bootstrap 文件（CLAUDE.md / HERMES.md 等）
@@ -730,55 +730,55 @@ function install(forceToolName, force) {
   如果你已经在主目录误装过，可以用 --uninstall 清理：
     npx superpowers-zh --uninstall
 `);
-    process.exit(1);
-  }
-
-  console.log(`  源: ${countDirs(SKILLS_SRC)} 个 skills`);
-  console.log(`  目标项目: ${PROJECT_DIR}\n`);
-
-  // --tool 指定安装
-  if (forceToolName) {
-    const target = TARGETS.find(t => t.name === forceToolName);
-    if (!target) {
-      console.error(`  ❌ 未知工具: ${forceToolName}`);
       process.exit(1);
     }
-    installForTarget(target);
-    console.log('\n  安装完成！重启你的 AI 编程工具即可生效。\n');
-    return;
-  }
 
-  // 自动检测
-  let installed = 0;
+    console.log(`  源: ${countDirs(SKILLS_SRC)} 个 skills`);
+    console.log(`  目标项目: ${PROJECT_DIR}\n`);
 
-  for (const target of TARGETS) {
-    const detects = Array.isArray(target.detect) ? target.detect : [target.detect];
-    const found = detects.some(d => existsSync(resolve(PROJECT_DIR, d)));
-    if (found) {
+    // --tool 指定安装
+    if (forceToolName) {
+      const target = TARGETS.find(t => t.name === forceToolName);
+      if (!target) {
+        console.error(`  ❌ 未知工具: ${forceToolName}`);
+        process.exit(1);
+      }
       installForTarget(target);
-      installed++;
+      console.log('\n  安装完成！重启你的 AI 编程工具即可生效。\n');
+      return;
     }
-  }
 
-  if (installed === 0) {
-    // 检测落空时不再静默装 Claude Code —— 否则 Antigravity / Trae 等
-    // 不会在项目里留下检测目录的工具，会被误装成 Claude（见 issue #33）。
-    // 改为明确报错并教用户用 --tool 显式指定。
-    console.log('  ⚠️  未在当前目录检测到任何已知 AI 编程工具的项目标记。\n');
-    console.log('  为避免装错工具，未做任何安装。请用 --tool 显式指定你的工具，例如：\n');
-    console.log('    npx superpowers-zh --tool claude        # Claude Code / Copilot CLI');
-    console.log('    npx superpowers-zh --tool antigravity   # Google Antigravity');
-    console.log('    npx superpowers-zh --tool trae          # Trae');
-    console.log('    npx superpowers-zh --tool cursor        # Cursor\n');
-    console.log(`  全部可用别名：${Object.keys(TOOL_ALIASES).join(', ')}\n`);
-    process.exit(1);
-  }
+    // 自动检测
+    let installed = 0;
 
-  console.log('\n  安装完成！重启你的 AI 编程工具即可生效。\n');
- } catch (err) {
+    for (const target of TARGETS) {
+      const detects = Array.isArray(target.detect) ? target.detect : [target.detect];
+      const found = detects.some(d => existsSync(resolve(PROJECT_DIR, d)));
+      if (found) {
+        installForTarget(target);
+        installed++;
+      }
+    }
+
+    if (installed === 0) {
+      // 检测落空时不再静默装 Claude Code —— 否则 Antigravity / Trae 等
+      // 不会在项目里留下检测目录的工具，会被误装成 Claude（见 issue #33）。
+      // 改为明确报错并教用户用 --tool 显式指定。
+      console.log('  ⚠️  未在当前目录检测到任何已知 AI 编程工具的项目标记。\n');
+      console.log('  为避免装错工具，未做任何安装。请用 --tool 显式指定你的工具，例如：\n');
+      console.log('    npx superpowers-zh --tool claude        # Claude Code / Copilot CLI');
+      console.log('    npx superpowers-zh --tool antigravity   # Google Antigravity');
+      console.log('    npx superpowers-zh --tool trae          # Trae');
+      console.log('    npx superpowers-zh --tool cursor        # Cursor\n');
+      console.log(`  全部可用别名：${Object.keys(TOOL_ALIASES).join(', ')}\n`);
+      process.exit(1);
+    }
+
+    console.log('\n  安装完成！重启你的 AI 编程工具即可生效。\n');
+  } catch (err) {
     console.error(`  ❌ 安装失败：${err.message}`);
     process.exit(1);
- }
+  }
 }
 
 const args = process.argv.slice(2);
