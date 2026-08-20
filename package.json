@@ -1,13 +1,10 @@
 {
   "name": "@tianma/superpowers-zh",
-  "version": "1.6.0",
-  "publishConfig": {
-    "registry": "http://192.168.21.9:4873/"
-  },
+  "version": "1.7.10",
   "engines": {
     "node": ">=20.0.0"
   },
-  "description": "AI 编程超能力中文增强版 — superpowers（159k+ ⭐）完整汉化 + 4 个中国原创 skills，支持 Claude Code / Copilot CLI / Hermes Agent / Cursor / Claw Code / Windsurf / Kiro / Gemini CLI / Qoder / Qoder CN 等 19 款工具",
+  "description": "AI 编程超能力中文增强版 — superpowers（250k+ ⭐）完整汉化 + 4 个中国原创 skills，支持 Claude Code / Copilot CLI / Hermes Agent / Cursor / Claw Code / Windsurf / Kiro / Gemini CLI / Qoder / Qoder CN 等 24 款工具",
   "type": "module",
   "main": ".opencode/plugins/superpowers.js",
   "bin": {
@@ -61,6 +58,8 @@
     "claw-code",
     "qoder",
     "qoder-cn",
+    "codebuddy",
+    "codearts",
     "ai-coding",
     "skills",
     "chinese",
@@ -84,5 +83,8 @@
   },
   "homepage": "https://github.com/jnMetaCode/superpowers-zh",
   "author": "TianMa",
-  "license": "MIT"
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "http://192.168.21.9:4873/"
+  }
 }
